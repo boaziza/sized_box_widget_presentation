@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// A realistic checkout screen for a coffee order.
-///
-/// Every SizedBox on this screen is labelled with a comment
-/// (SizedBox #1, #2, ...) so it is easy to point at during the presentation.
-/// SizedBox does three everyday jobs here:
-///   1. Give a widget a FIXED SIZE (product image, quantity label).
-///   2. Add EMPTY SPACE between widgets (no child, just width or height).
-///   3. Make a button FULL WIDTH (width: double.infinity).
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
 
@@ -50,7 +42,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         children: [
           _buildProductRow(textTheme),
 
-          // SizedBox #3 — vertical spacer: no child, only a height.
           const SizedBox(height: 24),
 
           Text('Order summary', style: textTheme.titleMedium),
@@ -65,9 +56,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          // SizedBox #5 — full-width button.
-          // width: double.infinity stretches the button to the screen edges;
-          // height: 52 gives it a fixed, easy-to-tap height.
           child: SizedBox(
             width: double.infinity,
             height: 52,
@@ -84,9 +72,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   Widget _buildProductRow(TextTheme textTheme) {
     return Row(
       children: [
-        // SizedBox #1 — fixed-size product image.
-        // Without it the image would size itself; with it the image is
-        // always exactly 120 × 120, so the layout never jumps around.
         SizedBox(
           width: 120,
           height: 120,
@@ -99,7 +84,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           ),
         ),
 
-        // SizedBox #2 — horizontal spacer between image and text.
         const SizedBox(width: 16),
 
         Expanded(
@@ -129,8 +113,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           onPressed: () => _changeQuantity(-1),
           icon: const Icon(Icons.remove_circle_outline),
         ),
-        // SizedBox #4 — fixed-width label.
-        // Keeps the + button from shifting when the number goes from 9 to 10.
         SizedBox(
           width: 32,
           child: Text(
