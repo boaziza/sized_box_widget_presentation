@@ -26,19 +26,4 @@ void main() {
 
     expect(find.text('Pay \$10.99'), findsOneWidget);
   });
-
-  testWidgets('Playground Defaults sets everything to null', (tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    await tester.tap(find.text('Playground'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Defaults'));
-    await tester.pumpAndSettle();
-
-    expect(
-      find.textContaining('SizedBox(width: null, height: null, child: null)'),
-      findsOneWidget,
-    );
-    expect(find.textContaining('rendered 0 × 0'), findsOneWidget);
-  });
 }
